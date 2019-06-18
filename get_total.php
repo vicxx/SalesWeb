@@ -11,4 +11,9 @@ while ($row=$rs->fetch_assoc())
 {
     $total = $total + ($row["price"]*$row["qty"]);
 }
+
+$st2=$con->prepare("update bill set total =? where bill_no=?");
+$st2->bind_param("di", $total, $_GET["bill_no"]);
+$st2->execute();
+
 echo $total;
