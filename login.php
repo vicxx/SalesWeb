@@ -10,7 +10,6 @@ $salted="AHB524bave".$password."038HDSBpmcn";
 $hashed_password= hash('sha512',$salted);
 
 $st_check=$con->prepare("select * from users where mobile ='$mobile' and password ='$hashed_password'");
-//$st_check->bind_param("ss", $mobile,$password);
 $st_check->execute();
 $rs=$st_check->get_result();
 
